@@ -1,0 +1,180 @@
+<!-- <script type="text/javascript">window.location.assign('../index.php');</script> -->
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="../css/style.css">
+	<link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Pridi" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Cookie" rel="stylesheet">
+	<link rel="stylesheet" href="../css/font-awesome-4.7.0/css/font-awesome.css">
+  <link rel="stylesheet" type="text/css" href="../css/msc-style.css">
+</head>
+<body>
+  <!-- Modal -->
+  <div id="modal-container" style="margin:0; padding: 0;"></div>
+  <!-- /Modal -->
+	<div class="container">
+		<div class="top-container">
+      <div class="button_container">
+        <form method='post' action="../index.php">
+            <a href="#"><input class="logout-btn" type="submit" value="Logout" name="but_logout" id="but_logout"></a>
+        </form>
+        <!-- <a href="#" class="logout-btn" onclick="logOut()"><i class="fa fa-sign-out"></i><span>Logout</span></a> -->
+      </div>
+      <div class="search_container">
+        <!-- <input type="search" class="search-bar" name="search" placeholder="Search for Menu"> -->
+        <select class="select-btn" id="table-type" onchange="getTableNumber()">
+
+        </select>
+        <select class="select-btn" id="table-number">
+
+        </select>
+      </div>
+		</div>
+    <div class="top-container2" style="font-family: 'Cookie', cursive;">
+      <div class="logo"><p">mini Kongs Express</p></div>
+    </div>
+		<div class="left-column">
+			<section class="top">
+				<span>ORDERS</span>
+			</section>
+			<section class="table" id="table">
+        <table id="customers">
+          <tr>
+            <th></th>
+            <th>Item Name</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Action</th>
+          </tr>
+          <tbody id="contents"></tbody>
+        </table>				
+			</section>
+			<section class="summary">
+				<span class="subtotal">
+          <label for="di_to">Dine-In/Take-Out: </label>
+          <select class="dito_select" id="di_to" onchange="dito()">
+            <option value="Dine-In">Dine In</option>
+            <option value="Take-Out">Take Out</option>
+          </select>
+        </span>
+        <span class="subtotal">Subtotal: <span class="value">&#8369; <b id="sub-total">0.00</b></span></span>
+				<!-- <span class="tax">Tax: <span class="value">&#8369; 10.61</span></span> -->
+				<span class="total"><span id="msg"></span>Total: <span class="value">&#8369; <b id="total">0.00</b></span></span>
+			</section>
+			<section class="action-buttons">
+        <input type="number" name="discount" id="discount" value="0">
+        <input type="number" name="total-bill" id="total-bill" value="0">
+        <input type="text" name="disc_name" id="disc_name">
+        <input type="text" name="disc_num" id="disc_num">
+        <input type="text" name="disc_type" id="disc_type">
+        <input type="text" name="disc-item-id" id="disc-item-id">
+        <center><button class="button" onclick="emptyCart()">EMPTY CART</button><button class="button" onclick="removeDiscount()">CLEAR DISCOUNT</button><a href="#modal-discount"><button class="button">DISCOUNT</button></a><button class="check-out-button" onclick="Confirm()">CHECKOUT</button></center>
+			</section>
+		</div>
+		<div class="right-column">
+      <div class="top">
+        <span>MENU</span>
+      </div>
+      <div class="content">
+        <input checked="checked" id="tab1" type="radio" name="pct" />
+        <input id="tab2" type="radio" name="pct" />
+        <input id="tab3" type="radio" name="pct" />
+        <input id="tab4" type="radio" name="pct" />
+        <input id="tab5" type="radio" name="pct" />
+        <input id="tab6" type="radio" name="pct" />
+        <input id="tab7" type="radio" name="pct" />
+        <input id="tab8" type="radio" name="pct" />
+        <input id="tab9" type="radio" name="pct" />
+        <input id="tab10" type="radio" name="pct" />
+        <input id="tab11" type="radio" name="pct" />
+        <input id="tab12" type="radio" name="pct" />
+        <input id="tab13" type="radio" name="pct" />
+        <input id="tab14" type="radio" name="pct" />
+        <input id="tab15" type="radio" name="pct" />
+        <input id="tab16" type="radio" name="pct" />
+        <input id="tab17" type="radio" name="pct" />
+        <input id="tab18" type="radio" name="pct" />
+        <input id="tab19" type="radio" name="pct" />
+        <nav>
+          <ul id="tab-container"></ul>
+        </nav>
+        <section id="tab-content"></section>
+      </div>
+      <div class="bottom"></div>
+		</div>
+	</div>
+
+ <div id="receipt-print" style="display: none;">
+  <div id="invoice-POS">
+    
+    <center id="top">
+      <div class="logo"><img src="../assets/kongs.png" width="300" height="200"></div>
+      <div class="info"> 
+        <h2>MINI KONG'S EXPRESS</h2>
+        <h2 class="h2">32 Magsaysay Drive, New Asinan, Olongapo City</h2>
+        <h2 class="h2">Vat Reg TIN 008-150-650-000</h2>
+      </div><!--End Info-->
+    </center><!--End InvoiceTop-->
+    
+    <div id="mid">
+      <div class="info">
+        <p> 
+            <b>Date:</b>&nbsp;<span id="dateToday"></span></br>
+            <!-- <b>Order No:</b>&nbsp;1</br> -->
+            <b>Server:</b>&nbsp;Ian</br>
+            <b>Table:</b>&nbsp;<span id="table-no"></span></br>
+            <b><span id="dto"></span></b>
+        </p>
+      </div>
+    </div><!--End Invoice Mid-->
+    
+    <div id="bot">
+      <center>
+          <div id="table">
+            <table>
+              <tr class="tblheader">
+                <th colspan="2">Item</th>
+                <th>Qty</th>
+                <th>Price</th>
+              </tr> 
+              <tbody id="receipt-table">
+                
+              </tbody>
+              <tr class="tbltotals">
+                <td colspan="4"></td>
+              </tr>
+              <tr class="tblitems">
+                <td colspan="2"></td>
+                <td>Subtotal</td>
+                <td>₱ <span id="receipt-stotal"></span></td>
+              </tr>
+<!--               <tr class="tblitems">
+                <td colspan="2"></td>
+                <td>VAT (12%)</td>
+                <td>₱ 120.00</td>
+              </tr> -->
+              <tr class="tblitems">
+                <td colspan="2"></td>
+                <td>Total</td>
+                <td >₱ <span id="receipt-total"></td>
+              </tr>
+            </table>
+          </div><!--End Table-->
+          <div id="legalcopy">
+            <p class="legal"><strong>Thank you for coming at Mini Kong's Express! </strong> </br> Please come again! 
+            </p>
+          </div>
+        </center>
+        </div><!--End InvoiceBot-->
+  </div><!--End Invoice-->  
+ </div>
+</body>
+<script type="text/javascript" src="../js/jquery-3.2.0.min.js"></script>
+<script type="text/javascript" src="../js/number_input.js"></script>
+<script type="text/javascript" src="../js/alert.js"></script>
+<script type="text/javascript" src="../js/msc-script.js"></script>
+<script type="text/javascript" src="../js/main-script.js"></script>
+</html>

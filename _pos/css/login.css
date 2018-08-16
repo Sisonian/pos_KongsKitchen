@@ -1,0 +1,60 @@
+body{
+	margin: 0px 0px 0px 0px;
+	padding: 0px 0px 0px 0px;
+}	
+.konglor{
+	background-color: rgb(250, 53, 69)!important;
+}
+.container{
+	padding: 25px 0px 75px 200px;		
+}
+.image{
+	background-image: url('../assets/kongs.jpg');
+	height: 250px;
+	width:250px;
+
+}
+.kol{
+	padding-left: 100px;
+}
+.wrapper{
+	padding-left: 300px;
+}
+#content{
+	padding-left: 20px;
+}
+.account-container{
+	padding:50px 50px 50px 50px;
+	background-color: rgb(255,255,255);
+
+
+}
+.cash-container{
+	padding:50px 50px 50px 50px;
+	background-color: rgb(255,255,255);
+
+}
+.home-container{
+	padding:50px 50px 50px 50px;
+	width:900px!important;
+	margin:0px 150px 0px -50px;
+
+	background-color: rgb(255,255,255);
+
+}
+.bordir{
+	border-radius: 15px;
+}
+.shine{
+	color: white;
+}
+.title-container{
+	padding:0px 1px 0px 1px;
+
+}
+.translate {
+	width: 100px;
+	height: 100px;
+	background: teal;
+	transform: translate(200px, 50%);
+}
